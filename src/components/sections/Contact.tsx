@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '../SocialIcons'
+import { Mail, MapPin, Send } from 'lucide-react'
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from '../SocialIcons'
 import { data } from '../../data/portfolio'
 
 const fadeUp = {
@@ -87,12 +87,12 @@ export default function Contact() {
             animate={isInView ? 'visible' : 'hidden'}
             style={{ fontSize: 'clamp(14px, 0.9vw, 16px)', color: '#666', lineHeight: 1.75, marginBottom: '32px' }}
           >
-            Siempre estoy abierto a discutir nuevos proyectos y oportunidades. Construyamos algo genial juntos.
+            Busco oportunidades para integrarme a empresas donde pueda aportar valor real. Abierto a propuestas laborales y proyectos de desarrollo.
           </motion.p>
 
           {[
             { icon: Mail, text: data.email, href: `mailto:${data.email}` },
-            { icon: Phone, text: data.phone, href: `tel:${data.phone}` },
+            { icon: WhatsappIcon, text: data.phone, href: `https://wa.me/${data.phone.replace(/\D/g, '')}` },
             { icon: MapPin, text: data.location, href: '#' },
           ].map(({ icon: Icon, text, href }, i) => (
             <motion.a

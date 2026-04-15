@@ -94,7 +94,7 @@ export default function Sidebar({ mobile = false }: SidebarProps) {
             ))}
           </div>
 
-          <a href={`mailto:${data.email}`} style={{ width: '100%', padding: '13px', borderRadius: '12px', background: 'transparent', border: '1px solid #2a2a2a', color: '#aaa', fontFamily: 'Raleway, sans-serif', fontWeight: 700, fontSize: 'clamp(14px, 2.2vw, 18px)', textAlign: 'center', textDecoration: 'none', transition: 'all 0.25s ease', display: 'block', letterSpacing: '0.04em' }}
+          <a href={`https://wa.me/${data.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" style={{ width: '100%', padding: '13px', borderRadius: '12px', background: 'transparent', border: '1px solid #2a2a2a', color: '#aaa', fontFamily: 'Raleway, sans-serif', fontWeight: 700, fontSize: 'clamp(14px, 2.2vw, 18px)', textAlign: 'center', textDecoration: 'none', transition: 'all 0.25s ease', display: 'block', letterSpacing: '0.04em' }}
             onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background='#60A5FA'; el.style.borderColor='#60A5FA'; el.style.color='#080808' }}
             onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background='transparent'; el.style.borderColor='#2a2a2a'; el.style.color='#aaa' }}
           >
@@ -166,7 +166,7 @@ export default function Sidebar({ mobile = false }: SidebarProps) {
           ))}
         </div>
 
-        <a href={`mailto:${data.email}`} style={{ width: '100%', padding: '11px', borderRadius: '11px', background: 'transparent', border: '1px solid #2a2a2a', color: '#aaa', fontFamily: 'Raleway, sans-serif', fontWeight: 700, fontSize: '12px', textAlign: 'center', textDecoration: 'none', transition: 'all 0.25s ease', display: 'block', letterSpacing: '0.04em' }}
+        <a href={`https://wa.me/${data.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" style={{ width: '100%', padding: '11px', borderRadius: '11px', background: 'transparent', border: '1px solid #2a2a2a', color: '#aaa', fontFamily: 'Raleway, sans-serif', fontWeight: 700, fontSize: '12px', textAlign: 'center', textDecoration: 'none', transition: 'all 0.25s ease', display: 'block', letterSpacing: '0.04em' }}
           onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background='#60A5FA'; el.style.borderColor='#60A5FA'; el.style.color='#080808' }}
           onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background='transparent'; el.style.borderColor='#2a2a2a'; el.style.color='#aaa' }}
         >

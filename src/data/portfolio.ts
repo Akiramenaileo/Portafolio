@@ -113,15 +113,13 @@ export const data = {
   // ── Skills (sidebar)
   skills: {
     technical: [
-      'React',
-      'TailwindCSS',
-      'MongoDB',
-      'Node.js',
-      'APIs REST',
+      'Desarrollo Full Stack',
       'Soporte Técnico',
+      'APIs REST',
       'Documentación',
       'Testing y Debugging',
       'Arquitectura de Software',
+      'Despliegue y DevOps',
     ],
     soft: [
       'Resolución de problemas',
