@@ -53,10 +53,8 @@ export const data = {
 
   // ── Redes
   social: {
-    github: 'https://github.com/Akiramenai',
-    linkedin: 'https://linkedin.com/in/',
-    instagram: 'https://instagram.com/',
-    twitter: 'https://twitter.com/',
+    github: 'https://github.com/Akiramenaileo',
+    linkedin: 'https://www.linkedin.com/in/leandro-leiva-10178435a/',
   },
 
   // ── Educación

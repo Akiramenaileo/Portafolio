@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { motion, useInView } from 'framer-motion'
 import { Mail, MapPin, Send } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, WhatsappIcon } from '../SocialIcons'
@@ -18,14 +19,32 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí puedes conectar EmailJS u otro servicio
-    setSent(true)
-    setTimeout(() => setSent(false), 3000)
-    setForm({ name: '', email: '', message: '' })
+    setStatus('sending')
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+          title: 'Portafolio',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setStatus('sent')
+      setForm({ name: '', email: '', message: '' })
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
   }
 
   const inputStyle: React.CSSProperties = {
@@ -241,16 +260,18 @@ export default function Contact() {
           </div>
           <button
             type="submit"
+            disabled={status === 'sending'}
             style={{
               padding: '13px',
               borderRadius: '12px',
-              background: sent ? '#1a2e1a' : '#60A5FA',
-              border: sent ? '1px solid #2a4a2a' : 'none',
-              color: sent ? '#4ade80' : '#0a0a0a',
+              background: status === 'sent' ? '#1a2e1a' : status === 'error' ? '#2e1a1a' : '#60A5FA',
+              border: status === 'sent' ? '1px solid #2a4a2a' : status === 'error' ? '1px solid #4a2a2a' : 'none',
+              color: status === 'sent' ? '#4ade80' : status === 'error' ? '#f87171' : '#0a0a0a',
               fontFamily: 'Raleway, sans-serif',
               fontWeight: 700,
               fontSize: '14px',
-              cursor: 'pointer',
+              cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+              opacity: status === 'sending' ? 0.7 : 1,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -258,13 +279,10 @@ export default function Contact() {
               transition: 'all 0.3s ease',
             }}
           >
-            {sent ? (
-              '✓ ¡Mensaje Enviado!'
-            ) : (
-              <>
-                Enviar Mensaje <Send size={14} />
-              </>
-            )}
+            {status === 'sending' && 'Enviando...'}
+            {status === 'sent' && '✓ ¡Mensaje Enviado!'}
+            {status === 'error' && '✕ Error, intentá de nuevo'}
+            {status === 'idle' && <><Send size={14} /> Enviar Mensaje</>}
           </button>
         </motion.form>
       </div>

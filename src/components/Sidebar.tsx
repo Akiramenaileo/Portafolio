@@ -1,5 +1,5 @@
 import { data } from '../data/portfolio'
-import { GithubIcon, LinkedinIcon, WhatsappIcon } from './SocialIcons'
+import { GithubIcon, LinkedinIcon } from './SocialIcons'
 
 interface SidebarProps {
   mobile?: boolean
@@ -34,7 +34,6 @@ export default function Sidebar({ mobile = false }: SidebarProps) {
   const socialLinks = [
     { icon: GithubIcon, href: data.social.github, label: 'GitHub' },
     { icon: LinkedinIcon, href: data.social.linkedin, label: 'LinkedIn' },
-    { icon: WhatsappIcon, href: `https://wa.me/${data.phone.replace(/\D/g, '')}`, label: 'WhatsApp' },
   ]
 
   // ── Mobile: ambas cards en fila, luego apiladas en pantallas muy chicas
