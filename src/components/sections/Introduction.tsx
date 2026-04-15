@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Download } from 'lucide-react'
+import { ArrowRight, Mail } from 'lucide-react'
 import { data } from '../../data/portfolio'
 import { useCounter } from '../../hooks/useCounter'
 
@@ -189,8 +189,7 @@ export default function Introduction({ isLoading = false }: { isLoading?: boolea
             Mis Proyectos <ArrowRight size={14} />
           </a>
           <a
-            href={data.cvUrl}
-            download
+            href="#contact"
             style={{
               padding: '12px 22px',
               borderRadius: '12px',
@@ -217,7 +216,7 @@ export default function Introduction({ isLoading = false }: { isLoading?: boolea
               el.style.color = '#aaa'
             }}
           >
-            <Download size={14} /> Descargar CV
+            <Mail size={14} /> Contáctame
           </a>
         </motion.div>
 

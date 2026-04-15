@@ -41,7 +41,7 @@ export const data = {
   location: 'Tucumán, Argentina',
   email: 'Leandro3741@gmail.com',
   phone: '+54 3865 325797',
-  bio: 'Técnico informático y desarrollador de software con experiencia en soporte técnico, mantenimiento de PC y desarrollo de sistemas administrativos. Me especializo en la resolución de problemas y en el desarrollo de soluciones tecnológicas para negocios.',
+  bio: 'Técnico Informático y Desarrollador de Software orientado a la calidad y el detalle. Me apasiona construir productos que funcionen bien y se vean mejor. Comprometido con cada proyecto desde el primer hasta el último commit.',
   cvUrl: '#',
 
   // ── Stats
