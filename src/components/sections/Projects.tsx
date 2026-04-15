@@ -179,7 +179,7 @@ function ProjectCard({ project }: { project: Project }) {
               el.style.color = '#888'
             }}
           >
-            <ExternalLink size={13} /> Live Demo
+            <ExternalLink size={13} /> Ver Demo
           </a>
         </div>
       </div>
@@ -202,7 +202,7 @@ export default function Projects() {
         <div style={{ marginBottom: '16px' }}>
           <span className="tag-badge">
             <span>→</span>
-            Projects
+            Proyectos
           </span>
         </div>
         <h2
@@ -215,9 +215,9 @@ export default function Projects() {
             lineHeight: 1.1,
           }}
         >
-          My Featured
+          Mis
           <br />
-          <span style={{ color: '#60A5FA' }}>Projects</span>
+          <span style={{ color: '#60A5FA' }}>Proyectos</span>
         </h2>
       </div>
 

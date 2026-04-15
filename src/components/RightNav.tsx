@@ -1,4 +1,4 @@
-import { Home, User, FolderOpen, Mail, FileText } from 'lucide-react'
+import { Home, FolderOpen, Mail, FileText, Layers } from 'lucide-react'
 
 interface RightNavProps {
   activeSection: string
@@ -6,11 +6,11 @@ interface RightNavProps {
 }
 
 const navItems = [
-  { id: 'introduction', icon: Home, label: 'Home' },
-  { id: 'about', icon: User, label: 'About' },
-  { id: 'projects', icon: FolderOpen, label: 'Projects' },
-  { id: 'resume', icon: FileText, label: 'Resume' },
-  { id: 'contact', icon: Mail, label: 'Contact' },
+  { id: 'introduction', icon: Home, label: 'Inicio' },
+  { id: 'projects', icon: FolderOpen, label: 'Proyectos' },
+  { id: 'resume', icon: FileText, label: 'Educación' },
+  { id: 'tools', icon: Layers, label: 'Herramientas' },
+  { id: 'contact', icon: Mail, label: 'Contacto' },
 ]
 
 export default function RightNav({ activeSection, onNavigate }: RightNavProps) {

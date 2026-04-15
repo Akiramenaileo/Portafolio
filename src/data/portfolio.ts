@@ -30,13 +30,14 @@ export interface Tool {
   name: string
   icon: string
   color: string
+  iconBg?: string
 }
 
 export const data = {
   // ── Perfil
   name: 'Leandro Alexis Leiva',
   role: 'Software Developer',
-  tagline: 'Técnico Informático & Desarrollador de Software',
+  tagline: 'Técnico Informático · Desarrollador de Software',
   location: 'Tucumán, Argentina',
   email: 'Leandro3741@gmail.com',
   phone: '+54 3865 325797',
@@ -45,9 +46,9 @@ export const data = {
 
   // ── Stats
   stats: [
-    { value: 5, suffix: '+', label: 'Years Experience' },
-    { value: 3, suffix: '+', label: 'Projects Built' },
-    { value: 100, suffix: '+', label: 'Devices Serviced' },
+    { value: 2, suffix: '+', label: 'Años de Experiencia' },
+    { value: 3, suffix: '+', label: 'Proyectos Creados' },
+    { value: 100, suffix: '+', label: 'Problemas Resueltos' },
   ],
 
   // ── Redes
@@ -179,9 +180,29 @@ export const data = {
       color: '#F7DF1E',
     },
     {
-      name: 'Vite',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/vite/vite-original.svg',
-      color: '#646CFF',
+      name: 'GitHub',
+      icon: 'https://cdn.simpleicons.org/github/ffffff',
+      color: '#ffffff',
+    },
+    {
+      name: 'VS Code',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/vscode/vscode-original.svg',
+      color: '#007ACC',
+    },
+    {
+      name: 'Cloudinary',
+      icon: 'https://cdn.simpleicons.org/cloudinary/3448C5',
+      color: '#3448C5',
+    },
+    {
+      name: 'Vercel',
+      icon: 'https://cdn.simpleicons.org/vercel/ffffff',
+      color: '#ffffff',
+    },
+    {
+      name: 'Railway',
+      icon: 'https://railway.com/brand/logo-light.png',
+      color: '#0B0D0E',
     },
   ] as Tool[],
 

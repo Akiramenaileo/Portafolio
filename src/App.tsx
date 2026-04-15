@@ -5,6 +5,7 @@ import RightNav from './components/RightNav'
 import MobileNav from './components/MobileNav'
 import LoadingScreen from './components/LoadingScreen'
 import Introduction from './components/sections/Introduction'
+import Skills from './components/sections/Skills'
 import Projects from './components/sections/Projects'
 import Resume from './components/sections/Resume'
 import Contact from './components/sections/Contact'
@@ -12,7 +13,7 @@ import { useActiveSection } from './hooks/useActiveSection'
 import { useMediaQuery } from './hooks/useMediaQuery'
 import { data } from './data/portfolio'
 
-const SECTION_IDS = ['introduction', 'projects', 'resume', 'contact']
+const SECTION_IDS = ['introduction', 'projects', 'resume', 'tools', 'skills', 'contact']
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -20,6 +21,8 @@ export default function App() {
   const activeSection = useActiveSection(SECTION_IDS)
 
   useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+    window.scrollTo(0, 0)
     const timer = setTimeout(() => setIsLoading(false), 2000)
     return () => clearTimeout(timer)
   }, [])
@@ -58,10 +61,10 @@ export default function App() {
       }}
     >
       <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '11px', color: '#333' }}>
-        © {new Date().getFullYear()} {data.name}. All rights reserved.
+        © {new Date().getFullYear()} {data.name}. Todos los derechos reservados.
       </span>
       <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '11px', color: '#333' }}>
-        Built with React + Tailwind + Framer Motion
+        Hecho con React + Tailwind + Framer Motion
       </span>
     </footer>
   )
@@ -74,11 +77,12 @@ export default function App() {
       {isMobile ? (
         /* ── Mobile layout: todo en flujo vertical ── */
         <div style={{ minHeight: '100vh', overflowX: 'hidden' }}>
-          <Sidebar mobile />
           <main>
-            <Introduction />
+            <Introduction isLoading={isLoading} />
+            <Sidebar mobile />
             <Projects />
             <Resume />
+            <Skills />
             <Contact />
             {footer}
           </main>
@@ -89,9 +93,10 @@ export default function App() {
         <div style={{ display: 'flex', height: '100vh', width: '100%', overflow: 'hidden' }}>
           <Sidebar />
           <main className="main-scroll" style={{ flex: 1 }}>
-            <Introduction />
+            <Introduction isLoading={isLoading} />
             <Projects />
             <Resume />
+            <Skills />
             <Contact />
             {footer}
           </main>

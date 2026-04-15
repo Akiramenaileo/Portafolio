@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, MapPin, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '../SocialIcons'
 import { data } from '../../data/portfolio'
 
@@ -52,7 +52,7 @@ export default function Contact() {
         <div style={{ marginBottom: '16px' }}>
           <span className="tag-badge">
             <span>→</span>
-            Contact
+            Contacto
           </span>
         </div>
         <h2
@@ -65,7 +65,7 @@ export default function Contact() {
             lineHeight: 1.1,
           }}
         >
-          Get in Touch
+          Hablemos
           <span style={{ color: '#60A5FA' }}>.</span>
         </h2>
       </div>
@@ -87,11 +87,12 @@ export default function Contact() {
             animate={isInView ? 'visible' : 'hidden'}
             style={{ fontSize: 'clamp(14px, 0.9vw, 16px)', color: '#666', lineHeight: 1.75, marginBottom: '32px' }}
           >
-            I'm always open to discussing new projects and opportunities. Let's build something great together.
+            Siempre estoy abierto a discutir nuevos proyectos y oportunidades. Construyamos algo genial juntos.
           </motion.p>
 
           {[
             { icon: Mail, text: data.email, href: `mailto:${data.email}` },
+            { icon: Phone, text: data.phone, href: `tel:${data.phone}` },
             { icon: MapPin, text: data.location, href: '#' },
           ].map(({ icon: Icon, text, href }, i) => (
             <motion.a
@@ -193,7 +194,7 @@ export default function Contact() {
           <div>
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Tu Nombre"
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -209,7 +210,7 @@ export default function Contact() {
           <div>
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Tu Email"
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -224,7 +225,7 @@ export default function Contact() {
           </div>
           <div>
             <textarea
-              placeholder="Your Message"
+              placeholder="Tu Mensaje"
               required
               rows={5}
               value={form.message}
@@ -258,10 +259,10 @@ export default function Contact() {
             }}
           >
             {sent ? (
-              '✓ Message Sent!'
+              '✓ ¡Mensaje Enviado!'
             ) : (
               <>
-                Send Message <Send size={14} />
+                Enviar Mensaje <Send size={14} />
               </>
             )}
           </button>

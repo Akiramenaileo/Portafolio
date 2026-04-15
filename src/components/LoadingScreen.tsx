@@ -69,7 +69,7 @@ export default function LoadingScreen({ isLoading, name }: LoadingScreenProps) {
               textTransform: 'uppercase',
             }}
           >
-            Loading portfolio...
+            Cargando portafolio...
           </motion.p>
 
           {/* Progress bar */}

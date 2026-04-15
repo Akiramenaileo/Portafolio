@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────
+   Base global — reset y configuración general
+   ───────────────────────────────────────── */
 @layer base {
   * {
     box-sizing: border-box;
@@ -14,14 +17,17 @@
   }
 
   body {
+    /* Fondo casi negro con texto blanco — tema oscuro del portafolio */
     background-color: #080808;
     color: #ffffff;
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
+    /* Suavizado de fuentes para mejor lectura en pantallas retina */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Scrollbar personalizada — sutil para no romper el diseño */
   ::-webkit-scrollbar {
     width: 4px;
   }
@@ -36,7 +42,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #60A5FA;
+    background: #60A5FA; /* Acento azul al hacer hover */
   }
 
   #root {
@@ -50,19 +56,27 @@
   }
 }
 
+/* ─────────────────────────────────────────
+   Utilidades reutilizables del portafolio
+   ───────────────────────────────────────── */
 @layer utilities {
+
+  /* Card base del sidebar — fondo oscuro con borde sutil */
   .sidebar-card {
     background: #101010;
     border: 1px solid #1c1c1c;
     border-radius: 20px;
   }
 
+  /* Contenedor del scroll principal en desktop
+     Separado del window scroll para no afectar el sidebar fijo */
   .main-scroll {
     height: 100vh;
     overflow-y: auto;
     scroll-behavior: smooth;
   }
 
+  /* Scrollbar más delgada dentro del área de contenido principal */
   .main-scroll::-webkit-scrollbar {
     width: 3px;
   }
@@ -75,17 +89,19 @@
     background: #1e1e1e;
   }
 
+  /* Punto azul de la línea de tiempo en Educación / Experiencia */
   .timeline-dot {
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: #60A5FA;
-    border: 3px solid #080808;
+    border: 3px solid #080808; /* Borde del color de fondo para efecto de "hueco" */
     box-shadow: 0 0 0 1px #60A5FA;
     flex-shrink: 0;
     margin-top: 5px;
   }
 
+  /* Badge de sección — etiqueta pequeña sobre los títulos (ej: "→ Proyectos") */
   .tag-badge {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -101,6 +117,7 @@
     text-transform: uppercase;
   }
 
+  /* Badge de tecnología — chips usados en las cards de proyectos */
   .tech-badge {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -117,6 +134,7 @@
     color: #60A5FA;
   }
 
+  /* Card de proyecto — con lift sutil al hacer hover */
   .project-card {
     background: #0d0d0d;
     border: 1px solid #1c1c1c;
@@ -130,6 +148,7 @@
     transform: translateY(-4px);
   }
 
+  /* Botón de icono de la navegación lateral derecha */
   .nav-icon-btn {
     width: 42px;
     height: 42px;

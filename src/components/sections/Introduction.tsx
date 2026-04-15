@@ -15,7 +15,7 @@ function StatCard({
   label: string
   start: boolean
 }) {
-  const count = useCounter(value, 1400, start)
+  const count = useCounter(value, 3500, start)
   return (
     <div
       style={{
@@ -67,18 +67,19 @@ function StatCard({
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.18, delayChildren: 0.2 },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: 'easeOut' as const } },
 }
 
-export default function Introduction() {
+export default function Introduction({ isLoading = false }: { isLoading?: boolean }) {
   const statsRef = useRef<HTMLDivElement>(null)
   const [statsVisible, setStatsVisible] = useState(false)
+  const [statsStarted, setStatsStarted] = useState(false)
 
   useEffect(() => {
     const el = statsRef.current
@@ -96,6 +97,12 @@ export default function Introduction() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (statsVisible && !isLoading) {
+      setStatsStarted(true)
+    }
+  }, [statsVisible, isLoading])
+
   return (
     <section
       id="introduction"
@@ -105,13 +112,13 @@ export default function Introduction() {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        animate={isLoading ? 'hidden' : 'visible'}
       >
         {/* Section badge */}
         <motion.div variants={itemVariants} style={{ marginBottom: '24px' }}>
           <span className="tag-badge">
             <span>→</span>
-            Introduction
+            Introducción
           </span>
         </motion.div>
 
@@ -128,9 +135,9 @@ export default function Introduction() {
             letterSpacing: '-0.02em',
           }}
         >
-          {`I'm Leandro`}
+          {`Soy Leandro`}
           <br />
-          <span style={{ color: '#d0d0d0', fontWeight: 700 }}>Software Developer</span>
+          <span style={{ color: '#d0d0d0', fontWeight: 700 }}>Desarrollador de Software</span>
           <span style={{ color: '#60A5FA' }}>.</span>
         </motion.h1>
 
@@ -179,7 +186,7 @@ export default function Introduction() {
               ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
             }}
           >
-            My Projects <ArrowRight size={14} />
+            Mis Proyectos <ArrowRight size={14} />
           </a>
           <a
             href={data.cvUrl}
@@ -210,7 +217,7 @@ export default function Introduction() {
               el.style.color = '#aaa'
             }}
           >
-            <Download size={14} /> Download CV
+            <Download size={14} /> Descargar CV
           </a>
         </motion.div>
 
@@ -226,7 +233,7 @@ export default function Introduction() {
               value={stat.value}
               suffix={stat.suffix}
               label={stat.label}
-              start={statsVisible}
+              start={statsStarted}
             />
           ))}
         </motion.div>

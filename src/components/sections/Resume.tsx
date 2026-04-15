@@ -115,7 +115,7 @@ export default function Resume() {
         <div style={{ marginBottom: '16px' }}>
           <span className="tag-badge">
             <span>→</span>
-            Resume
+            Currículum
           </span>
         </div>
         <h2
@@ -128,9 +128,9 @@ export default function Resume() {
             lineHeight: 1.1,
           }}
         >
-          Education &amp;
+          Educación<span style={{ color: '#60A5FA' }}>.</span>
           <br />
-          <span style={{ color: '#60A5FA' }}>Work Experience</span>
+          <span style={{ color: '#60A5FA' }}>Experiencia</span>
         </h2>
       </div>
 
@@ -157,7 +157,7 @@ export default function Resume() {
               marginBottom: '24px',
             }}
           >
-            Education
+            Educación
           </h3>
           {data.education.map((item: EducationItem, i: number) => (
             <TimelineItem
@@ -185,7 +185,7 @@ export default function Resume() {
               marginBottom: '24px',
             }}
           >
-            Work Experience
+            Experiencia Laboral
           </h3>
           {data.experience.map((item: ExperienceItem, i: number) => (
             <TimelineItem
@@ -202,15 +202,16 @@ export default function Resume() {
       </div>
 
       {/* Tools section */}
-      <div ref={toolsRef}>
+      <div id="tools" ref={toolsRef}>
         <h3
           style={{
             fontFamily: 'Raleway, sans-serif',
             fontWeight: 800,
-            fontSize: '22px',
+            fontSize: 'clamp(30px, 4vw, 54px)',
             color: '#ffffff',
             marginBottom: '24px',
-            letterSpacing: '-0.01em',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.1,
           }}
         >
           My Favorite Tools
@@ -248,11 +249,18 @@ export default function Resume() {
                 transition: { duration: 0.2 },
               }}
             >
-              <img
-                src={tool.icon}
-                alt={tool.name}
-                style={{ width: '32px', height: '32px', objectFit: 'contain' }}
-              />
+              <div style={{
+                width: '36px', height: '36px', borderRadius: '8px',
+                background: tool.iconBg ?? 'transparent',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                padding: tool.iconBg ? '4px' : '0',
+              }}>
+                <img
+                  src={tool.icon}
+                  alt={tool.name}
+                  style={{ width: '28px', height: '28px', objectFit: 'contain' }}
+                />
+              </div>
               <span
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',

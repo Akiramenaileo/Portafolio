@@ -1,4 +1,4 @@
-import { Home, FolderOpen, FileText, Mail, User } from 'lucide-react'
+import { Home, FolderOpen, FileText, Mail, Layers } from 'lucide-react'
 
 interface MobileNavProps {
   activeSection: string
@@ -7,9 +7,9 @@ interface MobileNavProps {
 
 const navItems = [
   { id: 'introduction', icon: Home, label: 'Inicio' },
-  { id: 'about', icon: User, label: 'Sobre mí' },
   { id: 'projects', icon: FolderOpen, label: 'Proyectos' },
-  { id: 'resume', icon: FileText, label: 'Resume' },
+  { id: 'resume', icon: FileText, label: 'Educación' },
+  { id: 'tools', icon: Layers, label: 'Herramientas' },
   { id: 'contact', icon: Mail, label: 'Contacto' },
 ]
 
