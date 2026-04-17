@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { GithubIcon } from '../SocialIcons'
@@ -16,7 +16,16 @@ const cardVariants = {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const hasImage = !!project.image
+  const hasImages = project.images.length > 0
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    if (project.images.length <= 1) return
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % project.images.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [project.images.length])
 
   return (
     <motion.div
@@ -28,18 +37,51 @@ function ProjectCard({ project }: { project: Project }) {
       <div
         style={{
           height: '180px',
-          background: hasImage ? undefined : 'linear-gradient(135deg, #161616, #1a1a1a)',
+          background: hasImages ? undefined : 'linear-gradient(135deg, #161616, #1a1a1a)',
           overflow: 'hidden',
           position: 'relative',
           flexShrink: 0,
         }}
       >
-        {hasImage ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+        {hasImages ? (
+          <>
+            {project.images.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`${project.title} ${i + 1}`}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  opacity: i === current ? 1 : 0,
+                  transition: 'opacity 0.7s ease',
+                }}
+              />
+            ))}
+            {project.images.length > 1 && (
+              <div style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '5px', zIndex: 1 }}>
+                {project.images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    style={{
+                      width: i === current ? '16px' : '6px',
+                      height: '6px',
+                      borderRadius: '3px',
+                      background: i === current ? '#60A5FA' : 'rgba(255,255,255,0.3)',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         ) : (
           <div
             style={{
@@ -64,7 +106,7 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
 
-        {/* Yellow accent line */}
+        {/* Accent line */}
         <div
           style={{
             position: 'absolute',

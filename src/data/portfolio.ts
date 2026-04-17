@@ -20,7 +20,7 @@ export interface Project {
   id: number
   title: string
   description: string
-  image: string
+  images: string[]
   tags: string[]
   github: string
   live: string
@@ -206,32 +206,43 @@ export const data = {
   projects: [
     {
       id: 1,
-      title: 'Sistema de Ventas — Joyería',
+      title: 'BarberDemo',
       description:
-        'Sistema integral para una joyería: stock, pedidos, clientes y cajeros. Tienda online con catálogo de productos y automatización del negocio.',
-      image: '',
-      tags: ['React', 'Node.js', 'MongoDB', 'TypeScript'],
-      github: 'https://github.com/Akiramenai',
-      live: '#',
+        'Agenda de turnos online con disponibilidad en tiempo real, selección de servicio y barbero, y confirmación automática por WhatsApp y seña pagada con MercadoPago.',
+      images: [
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776394066/Captura_de_pantalla_2026-04-16_232347_lrq2x7.png',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776394066/Captura_de_pantalla_2026-04-16_232405_byepkw.png',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776394066/Captura_de_pantalla_2026-04-16_232425_uszab0.png',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776394066/Captura_de_pantalla_2026-04-16_232444_y3yuat.png',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776394065/Captura_de_pantalla_2026-04-16_234142_lckmro.png',
+      ],
+      tags: ['React', 'Node.js', 'MongoDB', 'Express', 'MercadoPago'],
+      github: 'https://github.com/Akiramenaileo',
+      live: 'https://barbershop-five-eta.vercel.app/',
     },
     {
       id: 2,
-      title: 'TechHub E-Commerce',
+      title: 'Aylen Joyas',
       description:
-        'Plataforma e-commerce full-stack con gestión de productos, carrito de compras, checkout y panel administrativo completo.',
-      image: '',
-      tags: ['React', 'Express', 'MongoDB', 'TypeScript'],
-      github: 'https://github.com/Akiramenai',
-      live: '#',
+        'Plataforma de compras completa con catálogo de productos, carrito y pagos con Transferencias. Incluye panel de administración para gestionar stock y pedidos.',
+      images: [
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/fl_preserve_transparency/v1776366984/Captura_de_pantalla_2026-04-16_161445_cmrnnm.jpg?_s=public-apps',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776366984/Captura_de_pantalla_2026-04-16_161538_mwterz.png',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776366984/Captura_de_pantalla_2026-04-16_161519_k3ixf1.png',
+        'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776366984/Captura_de_pantalla_2026-04-16_161606_vxodri.png',
+      ],
+      tags: ['React', 'Node.js', 'TypeScript', 'Express', 'MongoDB', 'JWT'],
+      github: 'https://github.com/Akiramenaileo',
+      live: 'https://www.aylenjoyas.lat',
     },
     {
       id: 3,
       title: 'DevTuc Agency',
       description:
         'Landing page para agencia de desarrollo web con portafolio de servicios y panel de administración de contenido.',
-      image: '',
+      images: [],
       tags: ['React', 'TypeScript', 'Tailwind', 'Vercel'],
-      github: 'https://github.com/Akiramenai',
+      github: 'https://github.com/Akiramenaileo',
       live: 'https://devtuc.site',
     },
   ] as Project[],
