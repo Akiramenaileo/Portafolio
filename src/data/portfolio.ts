@@ -217,7 +217,7 @@ export const data = {
         'https://res.cloudinary.com/dwdit2sp3/image/upload/v1776394065/Captura_de_pantalla_2026-04-16_234142_lckmro.png',
       ],
       tags: ['React', 'Node.js', 'MongoDB', 'Express', 'MercadoPago'],
-      github: 'https://github.com/Akiramenaileo',
+      github: 'https://github.com/Akiramenaileo/barbershop',
       live: 'https://barbershop-five-eta.vercel.app/',
     },
     {
