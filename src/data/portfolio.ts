@@ -24,6 +24,7 @@ export interface Project {
   tags: string[]
   github: string
   live: string
+  comingSoon?: boolean
 }
 
 export interface Tool {
@@ -237,13 +238,13 @@ export const data = {
     },
     {
       id: 3,
-      title: 'DevTuc Agency',
-      description:
-        'Landing page para agencia de desarrollo web con portafolio de servicios y panel de administración de contenido.',
+      title: '',
+      description: '',
       images: [],
-      tags: ['React', 'TypeScript', 'Tailwind', 'Vercel'],
-      github: 'https://github.com/Akiramenaileo',
-      live: 'https://devtuc.site',
+      tags: [],
+      github: '',
+      live: '',
+      comingSoon: true,
     },
   ] as Project[],
 }

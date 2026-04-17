@@ -141,7 +141,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
 function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void }) {
   const hasImages = project.images.length > 0
-  const isComingSoon = !hasImages
+  const isComingSoon = !!project.comingSoon
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -195,31 +195,33 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
       </div>
 
       {/* Content */}
-      <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <h3 style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 700, fontSize: '16px', color: '#ffffff', marginBottom: '8px' }}>
-          {project.title}
-        </h3>
-        <p style={{ fontSize: 'clamp(13px, 0.9vw, 15px)', color: '#666', lineHeight: 1.65, marginBottom: '16px', flex: 1 }}>
-          {project.description}
-        </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
-          {project.tags.map((tag) => <span key={tag} className="tech-badge">{tag}</span>)}
+      {!isComingSoon && (
+        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+          <h3 style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 700, fontSize: '16px', color: '#ffffff', marginBottom: '8px' }}>
+            {project.title}
+          </h3>
+          <p style={{ fontSize: 'clamp(13px, 0.9vw, 15px)', color: '#666', lineHeight: 1.65, marginBottom: '16px', flex: 1 }}>
+            {project.description}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
+            {project.tags.map((tag) => <span key={tag} className="tech-badge">{tag}</span>)}
+          </div>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <a href={project.github} target="_blank" rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              style={{ flex: 1, padding: '9px', borderRadius: '10px', background: '#161616', border: '1px solid #2a2a2a', color: '#888', fontSize: '12px', fontFamily: 'JetBrains Mono, monospace', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s ease' }}
+              onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#60A5FA'; el.style.color = '#60A5FA' }}
+              onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#2a2a2a'; el.style.color = '#888' }}
+            ><GithubIcon size={13} /> GitHub</a>
+            <a href={project.live} target="_blank" rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              style={{ flex: 1, padding: '9px', borderRadius: '10px', background: '#161616', border: '1px solid #2a2a2a', color: '#888', fontSize: '12px', fontFamily: 'JetBrains Mono, monospace', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s ease' }}
+              onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#60A5FA'; el.style.color = '#60A5FA' }}
+              onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#2a2a2a'; el.style.color = '#888' }}
+            ><ExternalLink size={13} /> Ver Demo</a>
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <a href={project.github} target="_blank" rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            style={{ flex: 1, padding: '9px', borderRadius: '10px', background: '#161616', border: '1px solid #2a2a2a', color: '#888', fontSize: '12px', fontFamily: 'JetBrains Mono, monospace', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s ease' }}
-            onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#60A5FA'; el.style.color = '#60A5FA' }}
-            onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#2a2a2a'; el.style.color = '#888' }}
-          ><GithubIcon size={13} /> GitHub</a>
-          <a href={isComingSoon ? undefined : project.live} target={isComingSoon ? undefined : '_blank'} rel="noopener noreferrer"
-            onClick={(e) => { e.stopPropagation(); if (isComingSoon) e.preventDefault() }}
-            style={{ flex: 1, padding: '9px', borderRadius: '10px', background: '#161616', border: '1px solid #2a2a2a', color: isComingSoon ? '#333' : '#888', fontSize: '12px', fontFamily: 'JetBrains Mono, monospace', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s ease', cursor: isComingSoon ? 'default' : 'pointer' }}
-            onMouseEnter={(e) => { if (!isComingSoon) { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#60A5FA'; el.style.color = '#60A5FA' } }}
-            onMouseLeave={(e) => { if (!isComingSoon) { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = '#2a2a2a'; el.style.color = '#888' } }}
-          ><ExternalLink size={13} /> {isComingSoon ? 'Próximamente' : 'Ver Demo'}</a>
-        </div>
-      </div>
+      )}
     </motion.div>
   )
 }
